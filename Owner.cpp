@@ -13,10 +13,25 @@
 #include "Owner.h"
 using namespace std;
 void Owner::add_salesman() {
+    int id;
+    string nm;
+    cout<<"Enter ID"<<endl;
+    cin>>id;
+    cout<<id<<endl;
+    cin.ignore(80, '\n');
+    cout<<"Enter Name"<<endl;
+    cin>>nm;
+    cout<<nm<<endl;
+    cin.ignore(80, '\n');
 
 }
 
 void Owner::delete_salesman() {
+    int id;
+    cout<<"Enter ID"<<endl;
+    cin>>id;
+    cout<<id<<endl;
+    cin.ignore(80, '\n');
 }
 
 void Owner::interact() {

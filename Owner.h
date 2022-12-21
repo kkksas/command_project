@@ -12,7 +12,7 @@
 
 #if !defined(_OWNER_H)
 #define _OWNER_H
-
+#include <string>
 #include "User.h"
 
 class Owner : public User {
