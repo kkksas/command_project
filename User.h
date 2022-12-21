@@ -14,12 +14,15 @@
 #define _USER_H
 using namespace std;
 class User {
-private:
+protected:
     string name;
 	int id;
 public:
-	void get_id();
-	void get_name();
+    virtual int get_id();
+    virtual string get_name();
+    void set_name(string nm);
+    void set_id(int ID);
+    virtual void interact()=0;
 };
 
 #endif  //_USER_H

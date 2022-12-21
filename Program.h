@@ -8,29 +8,35 @@
 //  @ Author : 
 //
 //
-#include "Flower.h"
-#include "Order.h"
+#include "Storage.h"
+#include "Order_list.h"
 #include "Owner.h"
-#include "Salesman.h"
+#include "Salesman_list.h"
+
 #include <list>
 #include <vector>
+#include<iostream>
+#include<string>
+#include<fstream>
 
-
-
-#if !defined(_PROGRAM_H)
+#ifndef _PROGRAM_H
 #define _PROGRAM_H
 using namespace std;
 
-class Program {
+class Program
+{
 private:
-    list<Order*> Order_list;
-    list<Salesman*> Salesman_list;
-    TOwner Owner ;
-    vector<Flower*> flower_vect;
-    User* autorised_user_id;
+    Storage storage;
+    Order_list order_list;
+    Salesman_list salesman_list;
+    Owner* owner ;
+    User* autorised_user;
 public:
+    Program(string owner_name);
+    ~Program();
 	void get_flower_list();
 	void get_report();
+    void get_salesman_list();
 	void log_in();
 };
 

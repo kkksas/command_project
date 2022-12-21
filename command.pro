@@ -8,7 +8,10 @@ SOURCES += main.cpp \
     Owner.cpp \
     Salesman.cpp \
     User.cpp \
-    Program.cpp
+    Program.cpp \
+    Order_list.cpp \
+    Salesman_list.cpp \
+    Storage.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -19,5 +22,8 @@ HEADERS += \
     Salesman.h \
     User.h \
     Program.h \
-    Flower.h
+    Flower.h \
+    Order_list.h \
+    Salesman_list.h \
+    Storage.h
 

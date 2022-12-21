@@ -14,10 +14,15 @@
 #define _SALESMAN_H
 
 #include "User.h"
+#include"string"
+#include<iostream>
+using namespace std;
 
 class Salesman : public User {
 public:
-	void add_flower_to_storage();
+    Salesman();
+    Salesman(string nm, int sId);
+    void add_flower_to_storage();
 	void form_order();
 	void interact();
 };

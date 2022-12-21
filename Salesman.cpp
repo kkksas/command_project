@@ -8,10 +8,16 @@
 //  @ Author : 
 //
 //
-
-
 #include "Salesman.h"
+Salesman::Salesman(){
+}
 
+
+Salesman::Salesman(string nm, int sId){
+    User::name=nm;
+    User::id=sId;
+
+}
 void Salesman::add_flower_to_storage() {
 }
 
@@ -19,5 +25,29 @@ void Salesman::form_order() {
 }
 
 void Salesman::interact() {
+    while(true){
+        cout << "Press 'i' to add flower to storage, \n"
+        << "press 'f' to form order, \n"
+        << "press 'q' to quit: \n";
+        char ch = cin.get();
+        cin.ignore(80, '\n');
+        switch(ch){
+        case'i':
+            cout<<"add_flower_to_storage();";
+            add_flower_to_storage();
+            break;
+        case'f':
+            cout<<"form_order()";
+            form_order();
+            break;
+        case'q':
+            return;
+            break;
+        default:
+            cout<<"wrong button. \n";
+            break;
+
+        }
+    }
 }
 

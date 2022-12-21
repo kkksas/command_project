@@ -15,7 +15,7 @@
 
 #include "User.h"
 
-class TOwner : public User {
+class Owner : public User {
 public:
 	void add_salesman();
 	void delete_salesman();

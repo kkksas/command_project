@@ -8,16 +8,53 @@
 //  @ Author : 
 //
 //
-
-
+char* path = "salesman_list.txt";
 #include "program.h"
 
+Program::Program(string owner_name){
+        owner= new Owner;
+        owner->set_id(0);
+        owner->set_name(owner_name);
+        string nm;
+        int id;
+
+        salesman_list.get_list_from_file(path);
+
+//get_salesman_list();
+
+}
+
+Program::~Program(){
+
+    salesman_list.put_list_to_file(path);
+
+}
 void Program::get_flower_list() {
+
 }
 
 void Program::get_report() {
+
+}
+
+void Program::get_salesman_list(){
+    salesman_list.get_salerman_list();
 }
 
 void Program::log_in() {
+    int Tempid;
+    cout<<"Enter your id"<<endl;
+    cin >> Tempid;
+    cin.ignore(80, '\n');
+    if (Tempid==0){
+        autorised_user=owner;
+        cout<<"Welcome! "<<autorised_user->get_name()<<endl;
+        autorised_user->interact();
+    }
+   else{
+        autorised_user=salesman_list.find_slm(Tempid);
+        cout<<"Welcome! "<<autorised_user->get_name()<<endl;
+        autorised_user->interact();
+    }
 }
 

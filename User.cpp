@@ -12,9 +12,16 @@
 
 #include "User.h"
 
-void User::get_id() {
+int User::get_id() {
+    return id;
 }
 
-void User::get_name() {
+string User::get_name() {
+    return name;
 }
-
+void User::set_id(int ID){
+    id=ID;
+}
+void User::set_name(string nm){
+    name=nm;
+}

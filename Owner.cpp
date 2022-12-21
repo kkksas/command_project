@@ -9,15 +9,41 @@
 //
 //
 
-
+#include<iostream>
 #include "Owner.h"
+using namespace std;
+void Owner::add_salesman() {
 
-void TOwner::add_salesman() {
 }
 
-void TOwner::delete_salesman() {
+void Owner::delete_salesman() {
 }
 
-void TOwner::interact() {
+void Owner::interact() {
+    while(true){
+        cout << "Press 'i' to add new salesman, \n"
+        << "press 'd' to delete salesman, \n"
+        << "press 's' to see sum up,\n"
+        << "press 'q' to quit: \n";
+        char ch = cin.get();
+        cin.ignore(80, '\n');
+        switch(ch){
+        case'i':
+            add_salesman();
+            break;
+        case'd':
+            delete_salesman();
+            break;
+        case's':
+            break;
+        case'q':
+            return;
+            break;
+        default:
+            cout<<"wrong button. \n";
+            break;
+
+        }
+    }
 }
 
