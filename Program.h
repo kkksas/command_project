@@ -32,7 +32,7 @@ private:
     Owner* owner ;
     User* autorised_user;
 public:
-    Program(string owner_name);
+    Program(string nm);
     ~Program();
 	void get_flower_list();
 	void get_report();

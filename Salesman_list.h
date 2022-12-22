@@ -24,10 +24,11 @@ private:
 public:
     void add_salerman(Salesman *tmp_slm);
 	void get_salerman_list();
-    void remove_salerman(Salesman* tmp_slm);
+    void remove_salesman(int id);
     Salesman* find_slm(int id);
     void put_list_to_file(char* path);
     void get_list_from_file(char *path);
+    bool in_list(int id);
 
 };
 
