@@ -40,14 +40,14 @@ void Salesman_list::get_salerman_list() {
            }
 }
 
-void Salesman_list::remove_salerman(Salesman* tmp_slm) {
+void Salesman_list::remove_salesman(int id) {
     if (slm_list.empty()){
         cout<<"list is empty"<<endl;
     }
     else{
         iter= slm_list.begin();
         while(iter!= slm_list.end()){
-            if (*iter == tmp_slm){
+            if ((*iter)->get_id() == id){
                 slm_list.erase(iter);
                 break;
             }
@@ -65,11 +65,9 @@ Salesman *Salesman_list::find_slm(int id){
         if ((*iter)->get_id() == id){
             return *iter;
         }
-
         *iter++;
     }
     }
-
 }
 
 void Salesman_list::put_list_to_file(char *path){
@@ -115,6 +113,20 @@ void Salesman_list::get_list_from_file(char *path){
     }
     fin.close();
 
+}
+
+bool Salesman_list::in_list(int id)
+{
+    if (!slm_list.empty()){
+    iter= slm_list.begin();
+    while(iter!= slm_list.end()){
+        if ((*iter)->get_id() == id){
+            return true;
+        }
+        *iter++;
+    }
+    return false;
+    }
 }
 
 

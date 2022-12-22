@@ -11,14 +11,9 @@
 char* path = "salesman_list.txt";
 #include "program.h"
 
-Program::Program(string owner_name){
-        owner= new Owner;
-        owner->set_id(0);
-        owner->set_name(owner_name);
-        string nm;
-        int id;
-
-        salesman_list.get_list_from_file(path);
+Program::Program(string nm){
+    owner= new Owner(&salesman_list , nm);
+    salesman_list.get_list_from_file(path);
 
 //get_salesman_list();
 
