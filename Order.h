@@ -10,20 +10,25 @@
 //
 #include <ctime>
 #include<list>
-#include<Flower.h>
+#include<Storage.h>
 #if !defined(_ORDER_H)
 #define _ORDER_H
 using namespace std;
 
 class Order {
 private:
+    Storage* main_storage;
     time_t date;
 	int salesman_id;
     bool is_packaged;
     bool need_delivery;
     float final_price;
-    list<Flower*> flower_list;
+    Storage shoping_list;
 public:
+    Order(Storage* ptr_storage):storage(prt_storage)
+    {
+        /*а чё всмысле?*/
+    }
 	void remove_flowers_from_storage();
 };
 

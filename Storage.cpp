@@ -12,9 +12,119 @@
 
 #include "Storage.h"
 
-void Storage::add_flower() {
+void Storage::add_flower(Flower* temp_flw) {
+    if  (in_vect(temp_flw->get_name())){
+        iter= flower_vect.begin();
+        while(iter!= flower_vect.end()){
+            if ((*iter)->get_name() == temp_flw->get_name()){
+                int tmp=temp_flw->get_quantity()+(*iter)->get_quantity();
+                cout<<tmp;
+                (*iter)->set_quantity(tmp);
+                if (temp_flw->get_price()>(*iter)->get_price()){
+                    (*iter)->set_price(temp_flw->get_price());
+                }
+                break;
+            }
+            *iter++;
+            }
+    }
+    else{
+        flower_vect.push_back(temp_flw);
+    }
+
 }
 
-void Storage::get_flower_list(string fl_nm, int quantity, int price) {
+void Storage::get_flower_list() {
+    if (flower_vect.empty()){
+        cout<<"list is empty"<<endl;
+    }
+    else{
+        cout<<"Storage"<<endl;
+        cout<<"=================================================="<<endl;
+        cout<<"flower name";
+        cout<<"\t||\t";
+        cout<<"quantity";
+        cout<<"\t||";
+        cout<<"price";
+        cout<<"\t||"<<endl;
+        cout<<"=================================================="<<endl;
+        iter= flower_vect.begin();
+        while(iter!= flower_vect.end()){
+            cout<<(*iter)->get_name();
+            cout<<"\t||\t";
+            cout<<(*iter)->get_quantity();
+            cout<<"\t||";
+            cout<<(*iter)->get_price();
+            cout<<"\t||"<<endl;
+            *iter++;
+        }
+        cout<<"=================================================="<<endl;
+    }
 }
 
+void Storage::get_storage_from_file(char *path)
+{
+    ifstream fin;
+    string str,nm;
+    int count;
+    float price;
+    fin.open(path);
+    if(fin.is_open()){
+        while(!fin.eof()){
+            stringstream ss;
+            stringstream ss1;
+            str="";
+            fin>>str;
+            if (str!=""){
+                nm=str;
+            }
+            str="";
+            fin>>str;
+            if (str!=""){
+                ss<<str;
+                count=0;
+                ss>>count;
+            }
+            str="";
+            fin>>str;
+            if (str!=""){
+                ss1<<str;
+                price=0;
+                ss1>>price;
+                Flower* tmp_flw = new Flower(nm,count,price);
+                add_flower(tmp_flw);
+            }
+        }
+    }
+    fin.close();
+}
+
+void Storage::put_storage_to_file(char* path)
+{
+    if (!flower_vect.empty()){
+        ofstream fout;
+        fout.open(path);
+        iter= flower_vect.begin();
+        while(iter!= flower_vect.end()){
+            fout<<(*iter)->get_name()<<endl;
+            fout<<(*iter)->get_quantity()<<endl;
+            fout<<(*iter)->get_price()<<endl;
+            *iter++;
+           }
+        fout.close();
+    }
+}
+
+bool Storage::in_vect(string nm)
+{
+    if (!flower_vect.empty()){
+    iter= flower_vect.begin();
+    while(iter!= flower_vect.end()){
+        if ((*iter)->get_name() == nm){
+            return true;
+        }
+        *iter++;
+    }
+    return false;
+    }
+}

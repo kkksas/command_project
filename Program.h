@@ -34,7 +34,6 @@ private:
 public:
     Program(string nm);
     ~Program();
-	void get_flower_list();
 	void get_report();
     void get_salesman_list();
 	void log_in();

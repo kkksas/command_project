@@ -8,23 +8,20 @@
 //  @ Author : 
 //
 //
-char* path = "salesman_list.txt";
+char* slm_path = "salesman_list.txt";
+char* storage_path = "storage.txt";
 #include "program.h"
 
 Program::Program(string nm){
     owner= new Owner(&salesman_list , nm);
-    salesman_list.get_list_from_file(path);
-
-//get_salesman_list();
-
+    salesman_list.get_list_from_file(slm_path);
+    storage.get_storage_from_file(storage_path);
 }
 
 Program::~Program(){
 
-    salesman_list.put_list_to_file(path);
-
-}
-void Program::get_flower_list() {
+    salesman_list.put_list_to_file(slm_path);
+    storage.put_storage_to_file(storage_path);
 
 }
 

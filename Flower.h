@@ -20,10 +20,11 @@ private:
 	int quantity;
     float price;
 public:
+    Flower(string nm, int count, float flw_price);
     string get_name();
     int get_quantity();
     float get_price();
-    void set_quantity(int flw_price);
+    void set_quantity(int flw_count);
     void set_price(float flw_price);
 };
 

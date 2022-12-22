@@ -11,6 +11,9 @@
 #include<Flower.h>
 #include<vector>
 #include<string>
+#include<fstream>
+#include<sstream>
+#include<iostream>
 using namespace std;
 
 #if !defined(_STORAGE_H)
@@ -22,9 +25,11 @@ private:
     vector<Flower*> flower_vect;
     vector<Flower*>::iterator iter;
 public:
-	void add_flower();
-    void get_flower_list(string fl_nm, int quantity, int price);
-
+    void add_flower(Flower *temp_flw);
+    void get_flower_list();
+    void get_storage_from_file(char* path);
+    void put_storage_to_file(char* path);
+    bool in_vect(string nm);
 };
 
 #endif  //_STORAGE_H
