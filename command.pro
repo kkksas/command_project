@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     Order_list.cpp \
     Salesman_list.cpp \
     Storage.cpp \
-    Flower.cpp
+    Flower.cpp \
+    Summary.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -26,5 +27,6 @@ HEADERS += \
     Flower.h \
     Order_list.h \
     Salesman_list.h \
-    Storage.h
+    Storage.h \
+    Summary.h
 
