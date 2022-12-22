@@ -15,10 +15,16 @@
 using namespace std;
 
 class Flower {
-public:
+private:
     string flower_name;
 	int quantity;
     float price;
+public:
+    string get_name();
+    int get_quantity();
+    float get_price();
+    void set_quantity(int flw_price);
+    void set_price(float flw_price);
 };
 
 #endif  //_FLOWER_H

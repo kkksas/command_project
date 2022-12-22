@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     Program.cpp \
     Order_list.cpp \
     Salesman_list.cpp \
-    Storage.cpp
+    Storage.cpp \
+    Flower.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
