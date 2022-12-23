@@ -12,9 +12,116 @@
 
 #include "Order_list.h"
 
-void Order_list::add_order() {
+void Order_list::add_order(Order* order) {
+    order_list.push_back(order);
 }
 
-void Order_list::get_order_list() {
+
+void Order_list::get_order_list_from_file(char *path)
+{
+    ifstream fin;
+    string str;
+    bool pack, deliver;
+    int slm_id;
+    float fin_price, prof;
+    int year,day,mon;
+    fin.open(path);
+    if(fin.is_open()){
+        while(!fin.eof()){
+            fin>>str;
+            if (str==""){
+                break;
+            }
+            pack = (str!="0");
+            str="";
+            fin>>str;
+            if (str==""){
+                break;
+            }
+            deliver=(str!="0");
+            str="";
+            fin>>str;
+            if (str==""){
+                break;
+            }
+            slm_id=stoi(str);
+            str="";
+            fin>>str;
+            if (str==""){
+                break;
+            }
+            fin_price=stof(str);
+            str="";
+            fin>>str;
+            if (str==""){
+                break;
+            }
+            prof=stof(str);
+            str="";
+            fin>>str;
+            if (str==""){
+                break;
+            }
+            year=stoi(str);
+            str="";
+            fin>>str;
+            if (str==""){
+                break;
+            }
+            mon=stoi(str);
+            str="";
+            fin>>str;
+            if (str==""){
+                break;
+            }
+            day=stoi(str);
+            tm date;
+            date.tm_year;
+            date.tm_mon;
+            date.tm_mday;
+            Order* tmp_order = new Order(slm_id,pack,deliver,fin_price,prof, date);
+            order_list.push_back(tmp_order);
+        }
+    }
+    fin.close();
+}
+
+void Order_list::put_order_list_to_file(char *path)
+{
+    if (!order_list.empty()){
+        ofstream fout;
+        fout.open(path);
+        iter= order_list.begin();
+        while(iter!= order_list.end()){
+            fout<<(*iter)->get_pack()<<endl;
+            fout<<(*iter)->get_deliver()<<endl;
+            fout<<(*iter)->get_salesman_id()<<endl;
+            fout<<(*iter)->get_final_price()<<endl;
+            fout<<(*iter)->get_profit()<<endl;
+            tm time = (*iter)->get_date();
+            fout<<time.tm_year<<endl;
+            fout<<time.tm_mon<<endl;
+            fout<<time.tm_mday<<endl;
+            *iter++;
+           }
+        fout.close();
+    }
+}
+
+void Order_list::get_order_list()
+{
+    iter= order_list.begin();
+    while(iter!= order_list.end()){
+        cout<<(*iter)->get_pack()<<endl;
+        cout<<(*iter)->get_deliver()<<endl;
+        cout<<(*iter)->get_salesman_id()<<endl;
+        cout<<(*iter)->get_final_price()<<endl;
+        cout<<(*iter)->get_profit()<<endl;
+        tm time = (*iter)->get_date();
+        cout<<time.tm_year+1900<<endl;
+        cout<<time.tm_mon+1<<endl;
+        cout<<time.tm_mday<<endl;
+        *iter++;
+       }
 }
 

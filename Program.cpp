@@ -10,19 +10,21 @@
 //
 char* slm_path = "salesman_list.txt";
 char* storage_path = "storage.txt";
+char* order_list_path= "orderlist.txt";
 #include "program.h"
 
 Program::Program(string nm){
     owner= new Owner(&salesman_list , nm);
     salesman_list.get_list_from_file(slm_path);
     storage.get_storage_from_file(storage_path);
+    order_list.get_order_list_from_file(order_list_path);
 }
 
 Program::~Program(){
 
     salesman_list.put_list_to_file(slm_path);
     storage.put_storage_to_file(storage_path);
-
+    order_list.put_order_list_to_file(order_list_path);
 }
 
 void Program::get_report() {

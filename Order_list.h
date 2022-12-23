@@ -8,19 +8,24 @@
 //  @ Author : 
 //
 //
-#include "Order.h"
+
 
 #if !defined(_ORDER_LIST_H)
 #define _ORDER_LIST_H
+#include "Order.h"
+#include<iostream>
+using namespace std;
 
 
 class Order_list {
 private:
-    list<Order*> Order_list;
-    list<Order*>::iterator it_order;
+    list<Order*> order_list;
+    list<Order*>::iterator iter;
 public:
-	void add_order();
-	void get_order_list();
+    void add_order(Order *order);
+    void get_order_list_from_file(char* path);
+    void put_order_list_to_file(char* path);
+    void get_order_list();
 
 };
 

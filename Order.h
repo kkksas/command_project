@@ -17,19 +17,29 @@ using namespace std;
 
 class Order {
 private:
-    Storage* main_storage;
-    time_t date;
+    tm date;
 	int salesman_id;
     bool is_packaged;
     bool need_delivery;
     float final_price;
-    Storage shoping_list;
+    float profit;
+
 public:
-    Order(Storage* ptr_storage):storage(prt_storage)
+    Order(int empl_id,bool pack,bool deliver,float final, float prof);
+    Order(int empl_id, bool pack, bool deliver, float final, float prof, tm dt):salesman_id(empl_id),is_packaged(pack),need_delivery(deliver),final_price(final),profit(prof),date(dt)
     {
-        /*а чё всмысле?*/
+        /*пусто*/
     }
-	void remove_flowers_from_storage();
+    void make_a_deal();
+    bool get_pack();
+    bool get_deliver();
+    int get_salesman_id();
+    float get_final_price();
+    float get_profit();
+    tm get_date();
+    void set_pack(bool a);
+    void set_diliver(bool a);
+
 };
 
 #endif  //_ORDER_H
