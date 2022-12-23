@@ -9,11 +9,10 @@
 //
 //
 #include "Salesman.h"
-Salesman::Salesman(){
-}
 
 
-Salesman::Salesman(string nm, int sId){
+
+Salesman::Salesman(string nm, int sId,Storage* st, Order_list* ol):storage(st),order_list(ol){
     User::name=nm;
     User::id=sId;
 

@@ -15,12 +15,17 @@
 
 #include "User.h"
 #include"string"
+#include "Storage.h"
+#include "Order_list.h"
 #include<iostream>
 using namespace std;
 
 class Salesman : public User {
+private:
+    Storage* storage;
+    Order_list* order_list;
 public:
-    Salesman();
+    Salesman(string nm, int sId,Storage* st, Order_list* ol);
     Salesman(string nm, int sId);
     void add_flower_to_storage();
 	void form_order();

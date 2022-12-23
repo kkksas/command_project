@@ -12,7 +12,7 @@
 #include<iostream>
 #include "Owner.h"
 using namespace std;
-Owner::Owner(Salesman_list* ptr_slm, string nm):slm_l(ptr_slm)
+Owner::Owner(Salesman_list* ptr_slm, string nm, Storage* st, Order_list* ol):slm_l(ptr_slm),storage(st),order_list(ol)
 {
     User::set_id(0);
     User::set_name(nm);
@@ -30,7 +30,7 @@ void Owner::add_salesman() {
         cin>>id;
         cin.ignore(80, '\n');
         if (!slm_l->in_list(id) && id!=0){
-            Salesman* tmp_slm= new Salesman(nm,id);
+            Salesman* tmp_slm= new Salesman(nm,id,storage,order_list);
             slm_l->add_salerman(tmp_slm);            
             break;
         }

@@ -20,8 +20,8 @@ protected:
 public:
     virtual int get_id();
     virtual string get_name();
-    void set_name(string nm);
-    void set_id(int ID);
+    virtual void set_name(string nm);
+    virtual void set_id(int ID);
     virtual void interact()=0;
 };
 

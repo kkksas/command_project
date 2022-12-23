@@ -19,8 +19,10 @@
 class Owner : public User {
 private:
     Salesman_list* slm_l;
+    Storage* storage;
+    Order_list* order_list;
 public:
-    Owner(Salesman_list* ptr_slm,string nm);
+    Owner(Salesman_list* ptr_slm, string nm, Storage *st, Order_list *ol);
 	void add_salesman();
 	void delete_salesman();
 	void interact();

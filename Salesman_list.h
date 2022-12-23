@@ -21,7 +21,12 @@ class Salesman_list {
 private:
     list<Salesman*> slm_list;
     list<Salesman*>::iterator iter;
+    Storage* storage;
+    Order_list* order_list;
 public:
+    Salesman_list(Storage* st, Order_list* ol):storage(st),order_list(ol){
+        /*пусто*/
+    }
     void add_salerman(Salesman *tmp_slm);
 	void get_salerman_list();
     void remove_salesman(int id);
