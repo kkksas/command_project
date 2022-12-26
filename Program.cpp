@@ -14,7 +14,7 @@ char* order_list_path= "orderlist.txt";
 #include "program.h"
 
 Program::Program(string nm){
-    owner= new Owner(&salesman_list , nm);
+    owner= new Owner(&salesman_list , nm, &storage, &order_list);
     salesman_list.get_list_from_file(slm_path);
     storage.get_storage_from_file(storage_path);
     order_list.get_order_list_from_file(order_list_path);

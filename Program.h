@@ -28,7 +28,7 @@ class Program
 private:
     Storage storage;
     Order_list order_list;
-    Salesman_list salesman_list;
+    Salesman_list salesman_list{&storage, &order_list};
     Owner* owner ;
     User* autorised_user;
 public:

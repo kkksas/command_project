@@ -86,27 +86,26 @@ void Salesman_list::put_list_to_file(char *path){
 
 void Salesman_list::get_list_from_file(char *path){
     ifstream fin;
-    string nm;
+    string str, nm;
     int id;
     fin.open(path);
     if(fin.is_open()){
         while(!fin.eof()){
-            Salesman* tmp_slm = new Salesman;
+
             stringstream ss;
-            nm="";
-            fin>>nm;
-            if (nm!=""){
-                tmp_slm->set_name(nm);
+            str="";
+            fin>>str;
+            if (str!=""){
+                nm=str;
 
             }
-            nm="";
-            fin>>nm;
-            if (nm!=""){
-                ss<<nm;
+            str="";
+            fin>>str;
+            if (str!=""){
+                ss<<str;
                 id=0;
                 ss>>id;
-                tmp_slm->set_id(id);
-
+                Salesman* tmp_slm = new Salesman(nm,id,storage,order_list);
                 slm_list.push_back(tmp_slm);
             }
         }
