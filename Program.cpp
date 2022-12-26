@@ -14,7 +14,8 @@ char* order_list_path= "orderlist.txt";
 #include "program.h"
 
 Program::Program(string nm){
-    owner= new Owner(&salesman_list , nm, &storage, &order_list);
+    summary = new Summary(&order_list,&salesman_list,&storage);
+    owner= new Owner(&salesman_list , nm, &storage, &order_list,summary);
     salesman_list.get_list_from_file(slm_path);
     storage.get_storage_from_file(storage_path);
     order_list.get_order_list_from_file(order_list_path);
@@ -37,18 +38,28 @@ void Program::get_salesman_list(){
 
 void Program::log_in() {
     int Tempid;
-    cout<<"Enter your id"<<endl;
-    cin >> Tempid;
-    cin.ignore(80, '\n');
-    if (Tempid==0){
-        autorised_user=owner;
-        cout<<"Welcome! "<<autorised_user->get_name()<<endl;
-        autorised_user->interact();
-    }
-   else{
-        autorised_user=salesman_list.find_slm(Tempid);
-        cout<<"Welcome! "<<autorised_user->get_name()<<endl;
-        autorised_user->interact();
+    while(true){
+        cout<<"Enter your id"<<endl;
+        cin >> Tempid;
+        cin.ignore(80, '\n');
+        if (Tempid==0){
+            autorised_user=owner;
+            cout<<"Welcome! "<<autorised_user->get_name()<<endl;
+            autorised_user->interact();
+            break;
+        }
+       else{
+            if (salesman_list.in_list(Tempid)){
+            autorised_user=salesman_list.find_slm(Tempid);
+            cout<<"Welcome! "<<autorised_user->get_name()<<endl;
+            autorised_user->interact();
+            break;
+            }
+            else {
+                cout<<"Inpur error."<<endl;
+                continue;
+            }
+        }
     }
 }
 

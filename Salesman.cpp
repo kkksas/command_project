@@ -80,10 +80,10 @@ void Salesman::form_order() {
     while (true){
         char ch = cin.get();
         cin.ignore(80, '\n');
+        profit = price-shoping_list->storage_cost();
         switch(ch){
         case'y':
             shoping_list->storage_subtraction(storage);
-            profit = price-shoping_list->storage_cost();
             ord = new Order(User::get_id(),pack,deliver,price,profit);
             order_list->add_order(ord);
             cout<<"Deal is done";

@@ -12,7 +12,7 @@
 #include<iostream>
 #include "Owner.h"
 using namespace std;
-Owner::Owner(Salesman_list* ptr_slm, string nm, Storage* st, Order_list* ol):slm_l(ptr_slm),storage(st),order_list(ol)
+Owner::Owner(Salesman_list* ptr_slm, string nm, Storage* st, Order_list* ol, Summary *tmp_summary):slm_l(ptr_slm),storage(st),order_list(ol),summary(tmp_summary)
 {
     User::set_id(0);
     User::set_name(nm);
@@ -75,6 +75,7 @@ void Owner::interact() {
             delete_salesman();
             break;
         case's':
+            summary->to_sum_up();
             break;
         case'l':
             show_salesman_list();

@@ -13,5 +13,10 @@
 #include "Summary.h"
 
 void Summary::to_sum_up() {
+    cout<<"stock balance"<<endl;
+    storage->get_flower_list();
+    cout<<"Total profit: "<<order_list->total_profit()<<endl;
+    cout<<"General expenses: "<<order_list->total_cost()<<endl;
+    system("pause");
 }
 

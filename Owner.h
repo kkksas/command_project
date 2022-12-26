@@ -15,14 +15,16 @@
 #include "Salesman_list.h"
 #include <string>
 #include "User.h"
+#include "Summary.h"
 
 class Owner : public User {
 private:
     Salesman_list* slm_l;
     Storage* storage;
     Order_list* order_list;
+    Summary* summary;
 public:
-    Owner(Salesman_list* ptr_slm, string nm, Storage *st, Order_list *ol);
+    Owner(Salesman_list* ptr_slm, string nm, Storage *st, Order_list *ol, Summary* tmp_summary);
 	void add_salesman();
 	void delete_salesman();
 	void interact();

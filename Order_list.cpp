@@ -122,6 +122,33 @@ void Order_list::get_order_list()
         cout<<time.tm_mon+1<<endl;
         cout<<time.tm_mday<<endl;
         *iter++;
+    }
+}
+
+float Order_list::total_profit(){
+float profit=0;
+    if (!order_list.empty()){
+        iter= order_list.begin();
+        while(iter!= order_list.end()){
+            profit += (*iter)->get_profit();
+            *iter++;
+           }
+
+    }
+    return profit;
+}
+
+float Order_list::total_cost()
+{
+float cost=0;
+if (!order_list.empty()){
+    iter= order_list.begin();
+    while(iter!= order_list.end()){
+        cost +=((*iter)->get_final_price())-((*iter)->get_profit());
+        *iter++;
        }
+
+}
+return cost;
 }
 

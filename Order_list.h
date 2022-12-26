@@ -26,6 +26,8 @@ public:
     void get_order_list_from_file(char* path);
     void put_order_list_to_file(char* path);
     void get_order_list();
+    float total_profit();
+    float total_cost();
 
 };
 

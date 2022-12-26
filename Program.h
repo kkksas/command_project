@@ -12,6 +12,7 @@
 #include "Order_list.h"
 #include "Owner.h"
 #include "Salesman_list.h"
+#include "Summary.h"
 
 #include <list>
 #include <vector>
@@ -30,6 +31,7 @@ private:
     Order_list order_list;
     Salesman_list salesman_list{&storage, &order_list};
     Owner* owner ;
+    Summary* summary;
     User* autorised_user;
 public:
     Program(string nm);
