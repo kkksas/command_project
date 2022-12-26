@@ -18,6 +18,20 @@ Salesman::Salesman(string nm, int sId,Storage* st, Order_list* ol):storage(st),o
 
 }
 void Salesman::add_flower_to_storage() {
+    string flower_name;
+        int count, price;
+        cout<<"enter flower name: "<<endl;
+        cin>>flower_name;
+        cin.ignore(80, '\n');
+        cout<<"enter flower count"<<endl;
+        cin>>count;
+        cin.ignore(80, '\n');
+        cout<<"enter each flower price"<<endl;
+        cin>>price;
+        cin.ignore(80, '\n');
+        Flower* ptr_flower= new Flower(flower_name,count,price);
+        storage->add_flower(ptr_flower);
+        storage->get_flower_list();
 }
 
 void Salesman::form_order() {
@@ -32,11 +46,9 @@ void Salesman::interact() {
         cin.ignore(80, '\n');
         switch(ch){
         case'i':
-            cout<<"add_flower_to_storage();";
             add_flower_to_storage();
             break;
         case'f':
-            cout<<"form_order()";
             form_order();
             break;
         case'q':

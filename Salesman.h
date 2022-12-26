@@ -24,6 +24,7 @@ class Salesman : public User {
 private:
     Storage* storage;
     Order_list* order_list;
+    Storage* shoping_list;
 public:
     Salesman(string nm, int sId,Storage* st, Order_list* ol);
     Salesman(string nm, int sId);
