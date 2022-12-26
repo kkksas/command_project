@@ -5,7 +5,7 @@
 //  @ Project : Untitled
 //  @ File Name : Salesman.cpp
 //  @ Date : 19.12.2022
-//  @ Author : 
+//  @ Author :
 //
 //
 #include "Salesman.h"
@@ -35,21 +35,88 @@ void Salesman::add_flower_to_storage() {
 }
 
 void Salesman::form_order() {
+    float price, profit;
+    bool pack, deliver;
+    Order* ord;
+    shoping_list=storage->choose_flowers();
+    price=shoping_list->storage_cost()*1.35f;
+    cout << "Do client need package(y/n), \n";
+    while (true){
+        char ch = cin.get();
+        cin.ignore(80, '\n');
+        switch(ch){
+        case'y':
+            pack=true;
+            price+=20;
+            break;
+        case'n':
+            pack=false;
+            break;
+        default:
+            cout<<"wrong button. \n";
+            continue;
+        }
+        break;
+    }
+    cout << "Do client need deliver(y/n), \n";
+    while (true){
+        char ch = cin.get();
+        cin.ignore(80, '\n');
+        switch(ch){
+        case'y':
+            deliver=true;
+            price+=200;
+            break;
+        case'n':
+            deliver=false;
+            break;
+        default:
+            cout<<"wrong button. \n";
+            continue;
+        }
+        break;
+    }
+    cout<<"Total price: "<<price<<". Do you agree to the price?(y/n)";
+    while (true){
+        char ch = cin.get();
+        cin.ignore(80, '\n');
+        switch(ch){
+        case'y':
+            shoping_list->storage_subtraction(storage);
+            profit = price-shoping_list->storage_cost();
+            ord = new Order(User::get_id(),pack,deliver,price,profit);
+            order_list->add_order(ord);
+            cout<<"Deal is done";
+            break;
+        case'n':
+            break;
+        default:
+            cout<<"wrong button. \n";
+            continue;
+        }
+        break;
+    }
+
 }
 
 void Salesman::interact() {
     while(true){
         cout << "Press 'i' to add flower to storage, \n"
         << "press 'f' to form order, \n"
+        << "press 's' to see storage, \n"
         << "press 'q' to quit: \n";
         char ch = cin.get();
         cin.ignore(80, '\n');
         switch(ch){
         case'i':
+            cout<<"add_flower_to_storage();";
             add_flower_to_storage();
             break;
         case'f':
             form_order();
+            break;
+        case's':
+            storage->get_flower_list();
             break;
         case'q':
             return;
@@ -61,4 +128,6 @@ void Salesman::interact() {
         }
     }
 }
+
+
 

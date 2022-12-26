@@ -128,3 +128,101 @@ bool Storage::in_vect(string nm)
     return false;
     }
 }
+Flower *Storage::find_flower(string nm)
+{
+    if (!flower_vect.empty()){
+    iter= flower_vect.begin();
+    while(iter!= flower_vect.end()){
+        if ((*iter)->get_name() == nm){
+            return *iter;
+        }
+        *iter++;
+    }
+    return NULL;
+    }
+}
+
+Storage *Storage::choose_flowers()
+{
+    Storage* shop_list= new Storage;
+    int count;
+    Flower* tmp_flw;
+    if (!flower_vect.empty()){
+        iter= flower_vect.begin();
+        while (true){
+            cout<<(*iter)->get_name();
+            cout<<"\t||\t";
+            cout<<(*iter)->get_quantity();
+            cout<<"\t||";
+            cout<<((*iter)->get_price()*1.35);
+            cout<<"\t||"<<endl;
+
+            cout << "Press 'a' to add flower to shoping list, \n"
+            << "press 'n' to move to the next flower, \n"
+            << "press 'p' to move to the previos flower, \n"
+            << "press 'q' to end coosing flowers: \n";
+            char ch = cin.get();
+            cin.ignore(80, '\n');
+            switch(ch){
+            case'a':
+                do{
+                    cout<<"enter number of flower client want to buy:";
+                    cin>>count;
+                    cin.ignore(80, '\n');
+                }while(count>(*iter)->get_quantity() || (count<0));
+                if (!shop_list->in_vect((*iter)->get_name())){
+                    tmp_flw = new Flower((*iter)->get_name(),count,(*iter)->get_price());
+                    shop_list->add_flower(tmp_flw);
+                }
+                else{
+                    tmp_flw=shop_list->find_flower((*iter)->get_name());
+                    tmp_flw->set_quantity(count);
+                }
+                break;
+            case'n':
+                if(iter!= flower_vect.end()-1)
+                    *iter++;
+                break;
+            case'p':
+                if(iter!= flower_vect.begin())
+                    *iter--;
+                break;
+            case'q':
+                return shop_list;
+                break;
+            default:
+                cout<<"wrong button. \n";
+                break;
+
+            }
+        }
+    }
+    return shop_list;
+}
+
+float Storage::storage_cost()
+{
+    float sum = 0.f;
+    if (!flower_vect.empty()){
+        iter= flower_vect.begin();
+        while(iter!= flower_vect.end()){
+            sum+=(*iter)->get_quantity()*(*iter)->get_price();
+            *iter++;
+           }
+    }
+    return sum;
+}
+
+void Storage::storage_subtraction(Storage *storage)
+{
+    if (!flower_vect.empty()){
+        int count;
+        iter= flower_vect.begin();
+        while(iter!= flower_vect.end()){
+            count=(-1)*(*iter)->get_quantity();
+            (*iter)->set_quantity(count);
+            storage->add_flower(*iter);
+            *iter++;
+           }
+    }
+}

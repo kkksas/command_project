@@ -30,6 +30,11 @@ public:
     void get_storage_from_file(char* path);
     void put_storage_to_file(char* path);
     bool in_vect(string nm);
+    Flower* find_flower(string nm);
+    Storage* choose_flowers();
+    float storage_cost();
+    void storage_subtraction(Storage* storage);
+
 };
 
 #endif  //_STORAGE_H
