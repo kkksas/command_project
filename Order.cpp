@@ -11,7 +11,62 @@
 
 
 #include "Order.h"
-
-void Order::remove_flowers_from_storage() {
+char buffer[80];
+Order::Order(int empl_id, bool pack, bool deliver, float final, float prof):salesman_id(empl_id),is_packaged(pack),need_delivery(deliver),final_price(final),profit(prof)
+{
+    time_t date1;
+    date1 = time(NULL);
+    localtime_s(&date, &date1);
+    char* format = "%d %m %Y";
+    strftime(buffer, 80, format, &date);
+    cout << "Current Date: " << buffer << endl;
 }
 
+
+void Order::make_a_deal() {
+}
+
+bool Order::get_pack()
+{
+    return is_packaged;
+}
+
+bool Order::get_deliver()
+{
+    return need_delivery;
+}
+
+void Order::set_pack(bool a)
+{
+    is_packaged=a;
+}
+
+void Order::set_diliver(bool a)
+{
+    need_delivery= a;
+}
+
+
+int Order::get_salesman_id()
+{
+    return salesman_id;
+}
+
+float Order::get_final_price()
+{
+    return final_price;
+}
+
+float Order::get_profit()
+{
+    return profit;
+}
+
+
+tm Order::get_date()
+{
+    time_t date1;
+    date1 = time(NULL);
+    localtime_s(&date, &date1);
+    return date;
+}

@@ -10,21 +10,36 @@
 //
 #include <ctime>
 #include<list>
-#include<Flower.h>
+#include<Storage.h>
 #if !defined(_ORDER_H)
 #define _ORDER_H
 using namespace std;
 
 class Order {
 private:
-    time_t date;
+    tm date;
 	int salesman_id;
     bool is_packaged;
     bool need_delivery;
     float final_price;
-    list<Flower*> flower_list;
+    float profit;
+
 public:
-	void remove_flowers_from_storage();
+    Order(int empl_id,bool pack,bool deliver,float final, float prof);
+    Order(int empl_id, bool pack, bool deliver, float final, float prof, tm dt):salesman_id(empl_id),is_packaged(pack),need_delivery(deliver),final_price(final),profit(prof),date(dt)
+    {
+        /*пусто*/
+    }
+    void make_a_deal();
+    bool get_pack();
+    bool get_deliver();
+    int get_salesman_id();
+    float get_final_price();
+    float get_profit();
+    tm get_date();
+    void set_pack(bool a);
+    void set_diliver(bool a);
+
 };
 
 #endif  //_ORDER_H

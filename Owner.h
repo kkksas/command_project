@@ -12,14 +12,23 @@
 
 #if !defined(_OWNER_H)
 #define _OWNER_H
-
+#include "Salesman_list.h"
+#include <string>
 #include "User.h"
+#include "Summary.h"
 
-class TOwner : public User {
+class Owner : public User {
+private:
+    Salesman_list* slm_l;
+    Storage* storage;
+    Order_list* order_list;
+    Summary* summary;
 public:
+    Owner(Salesman_list* ptr_slm, string nm, Storage *st, Order_list *ol, Summary* tmp_summary);
 	void add_salesman();
 	void delete_salesman();
 	void interact();
+    void show_salesman_list();
 };
 
 #endif  //_OWNER_H
