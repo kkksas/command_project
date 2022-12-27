@@ -28,14 +28,6 @@ Program::~Program(){
     order_list.put_order_list_to_file(order_list_path);
 }
 
-void Program::get_report() {
-
-}
-
-void Program::get_salesman_list(){
-    salesman_list.get_salerman_list();
-}
-
 void Program::log_in() {
     int Tempid;
     while(true){

@@ -109,7 +109,6 @@ void Salesman::interact() {
         cin.ignore(80, '\n');
         switch(ch){
         case'i':
-            cout<<"add_flower_to_storage();";
             add_flower_to_storage();
             break;
         case'f':

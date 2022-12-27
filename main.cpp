@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    Program program("Kostya");
+    Program program("Owner");
     program.log_in();
 }
 
