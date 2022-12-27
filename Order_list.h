@@ -22,6 +22,7 @@ private:
     list<Order*> order_list;
     list<Order*>::iterator iter;
 public:
+    ~Order_list();
     void add_order(Order *order);
     void get_order_list_from_file(char* path);
     void put_order_list_to_file(char* path);

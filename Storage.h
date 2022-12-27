@@ -25,6 +25,7 @@ private:
     vector<Flower*> flower_vect;
     vector<Flower*>::iterator iter;
 public:
+    ~Storage();
     void add_flower(Flower *temp_flw);
     void get_flower_list();
     void get_storage_from_file(char* path);

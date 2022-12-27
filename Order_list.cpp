@@ -12,6 +12,17 @@
 
 #include "Order_list.h"
 
+Order_list::~Order_list()
+{
+    {
+        while (!order_list.empty()){
+            iter=order_list.begin();
+            delete *iter;
+            order_list.erase(iter);
+        }
+    }
+}
+
 void Order_list::add_order(Order* order) {
     order_list.push_back(order);
 }

@@ -27,6 +27,7 @@ public:
     Salesman_list(Storage* st, Order_list* ol):storage(st),order_list(ol){
         /*пусто*/
     }
+    ~Salesman_list();
     void add_salerman(Salesman *tmp_slm);
 	void get_salerman_list();
     void remove_salesman(int id);

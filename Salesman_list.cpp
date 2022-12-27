@@ -12,6 +12,17 @@
 
 #include "Salesman_list.h"
 
+Salesman_list::~Salesman_list()
+{
+    {
+        while (!slm_list.empty()){
+            iter=slm_list.begin();
+            delete *iter;
+            slm_list.erase(iter);
+        }
+    }
+}
+
 void Salesman_list::add_salerman(Salesman* tmp_slm) {
     slm_list.push_back(tmp_slm);
 }

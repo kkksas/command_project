@@ -12,6 +12,15 @@
 
 #include "Storage.h"
 
+Storage::~Storage()
+{
+    while (!flower_vect.empty()){
+        iter=flower_vect.begin();
+        delete *iter;
+        flower_vect.erase(iter);
+    }
+}
+
 void Storage::add_flower(Flower* temp_flw) {
     if  (in_vect(temp_flw->get_name())){
         iter= flower_vect.begin();
